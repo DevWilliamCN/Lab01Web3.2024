@@ -17,11 +17,24 @@ btnInsUser.addEventListener("click", function () {
     .createUserWithEmailAndPassword(txtEmail.value, txtContra.value)
     .then((userCredential) => {
       const user = userCredential.user;
+
+      // Obtén la fecha actual
+      const fechaActual = new Date();
+
+      // Actualiza la fecha de último acceso
       db.collection("datosUsuarios")
+        .doc(user.uid)
+        .update({
+          ultimoAcceso: fechaActual,
+        });
+
+      db.collection("datosUsuarios")
+        .doc(user.uid)
+        .collection("detalles")
         .add({
-          idemp: user.uid,
           usuario: txtNombre.value,
           email: user.email,
+          fechaCreacion: fechaActual,
         })
         .then(function (docRef) {
           alert("Usuario agregado satisfactoriamente");

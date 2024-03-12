@@ -1,51 +1,93 @@
 /* CSS Document */
-:root{
+:root {
     --primary: #110C0CFF;
     --light: #FFFFFF;
     --grey1: #EEEEEE;
     --grey2: #F0F1F1;
     --orange: #D6731D;
-    --lblue1: #559EE0;
+    --lblue1: #080a0b;
     --lblue2: #B4C5E5;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     user-select: none;
     box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s; /* Suave transición para los cambios de color */
 }
 
 .header .navbar {
-    background-color: rgba(255,255,255,0.5) !important;
+    background-color: var(--primary) !important; /* Fondo sólido para la barra de navegación */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-body{
+body {
     padding-top: 70px;
+    background-color: var(--grey2); /* Color de fondo para todo el cuerpo */
 }
 
-.formatDiv{
+.formatDiv {
     width: 250px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 2em auto;
+    padding: 1em;
+    background-color: var(--light); /* Fondo claro para los divisores */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más suave */
 }
 
-.imgBlock{
+.imgBlock {
     height: 150px;
     width: 150px;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 0 auto;
 }
 
-.divAnuncio{
+.divAnuncio {
     background-color: var(--light);
     border: thin solid var(--lblue1);
     border-radius: 5px;
-    box-shadow: 2px 2px 5px var(--lblue2);
-    float: left;
-    margin: 8px;
-    padding-top: 5px;
-    text-align: center;
-    width: 160px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra actualizada */
+    margin: 0.5em;
+    padding: 0.5em;
+    width: calc(100% - 1em); /* Ancho ajustado al contenedor */
+    transition: transform 0.3s; /* Transición para efecto al pasar el mouse */
+}
+
+.divAnuncio:hover {
+    transform: translateY(-5px); /* Eleva el anuncio al pasar el mouse */
+}
+
+button, .btn {
+    background-color: var(--orange); /* Botón naranja para que resalte */
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    color: var(--light);
+    font-weight: bold;
+    transition: background-color 0.3s; /* Transición suave del color */
+}
+
+button:hover, .btn:hover {
+    background-color: darken(var(--orange), 10%); /* Oscurece el botón al pasar el mouse */
+    cursor: pointer;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="file"], textarea {
+    width: 100%; /* Ancho completo para aprovechar el espacio */
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid var(--grey1);
+    border-radius: 5px;
+}
+
+/* Media query para dispositivos más pequeños */
+@media (max-width: 768px) {
+    .header .navbar {
+        padding: 0.5em;
+    }
+
+    .formatDiv, .divAnuncio {
+        width: 100%;
+        margin: 0.5em 0;
+        box-shadow: none; /* Sombra eliminada para dispositivos móviles */
+    }
 }
