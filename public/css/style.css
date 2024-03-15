@@ -1,93 +1,102 @@
-/* CSS Document */
 :root {
-    --primary: #110C0CFF;
-    --light: #FFFFFF;
-    --grey1: #EEEEEE;
-    --grey2: #F0F1F1;
-    --orange: #D6731D;
-    --lblue1: #080a0b;
-    --lblue2: #B4C5E5;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    user-select: none;
-    box-sizing: border-box;
-    transition: background-color 0.3s, color 0.3s; /* Suave transición para los cambios de color */
-}
-
-.header .navbar {
-    background-color: var(--primary) !important; /* Fondo sólido para la barra de navegación */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    --primary-color: #35424a; /* Un azul grisáceo profundo */
+    --secondary-color: #2ecc71; /* Un verde claro vibrante para acentos */
+    --background-color: #eaebed; /* Un gris claro para el fondo, más suave para los ojos */
+    --text-color: #333333; /* Un gris oscuro para el texto principal para mejorar la legibilidad */
+    --border-radius: 8px; /* Redondeado para botones y campos de entrada */
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para elevar elementos */
+    --transition-speed: 0.3s; /* Velocidad uniforme para las transiciones */
+    --font-size-small: 14px; /* Tamaño de fuente pequeño para textos generales */
+    --font-size-smaller: 12px; /* Tamaño de fuente aún más pequeño para detalles */
 }
 
 body {
-    padding-top: 70px;
-    background-color: var(--grey2); /* Color de fondo para todo el cuerpo */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    font-size: var(--font-size-small);
+    padding-top: 70px; /* espacio para la barra de navegación */
+    line-height: 1.6; /* Más espacio entre líneas para mejor legibilidad */
+}
+
+.header .navbar {
+    background-color: var(--primary-color);
+    box-shadow: var(--box-shadow);
+    font-size: var(--font-size-small);
 }
 
 .formatDiv {
-    width: 250px;
+    width: auto;
+    max-width: 300px; /* Ajusta esto según el ancho deseado */
     margin: 2em auto;
-    padding: 1em;
-    background-color: var(--light); /* Fondo claro para los divisores */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más suave */
-}
-
-.imgBlock {
-    height: 150px;
-    width: 150px;
-    margin: 0 auto;
-}
-
-.divAnuncio {
+    padding: 2em;
     background-color: var(--light);
-    border: thin solid var(--lblue1);
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra actualizada */
-    margin: 0.5em;
-    padding: 0.5em;
-    width: calc(100% - 1em); /* Ancho ajustado al contenedor */
-    transition: transform 0.3s; /* Transición para efecto al pasar el mouse */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    font-size: var(--font-size-small);
 }
 
-.divAnuncio:hover {
-    transform: translateY(-5px); /* Eleva el anuncio al pasar el mouse */
+.divAnuncio, .formatDiv {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: var(--font-size-smaller); /* Tamaño de fuente reducido para anuncios */
 }
 
 button, .btn {
-    background-color: var(--orange); /* Botón naranja para que resalte */
-    border: none;
-    padding: 0.5em 1em;
-    border-radius: 5px;
-    color: var(--light);
-    font-weight: bold;
-    transition: background-color 0.3s; /* Transición suave del color */
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: background-color var(--transition-speed);
+    font-size: var(--font-size-small);
 }
 
 button:hover, .btn:hover {
-    background-color: darken(var(--orange), 10%); /* Oscurece el botón al pasar el mouse */
+    background-color: darken(var(--secondary-color), 10%);
     cursor: pointer;
 }
 
-input[type="text"], input[type="email"], input[type="password"], input[type="file"], textarea {
-    width: 100%; /* Ancho completo para aprovechar el espacio */
-    padding: 0.5em;
-    margin-bottom: 1em;
-    border: 1px solid var(--grey1);
-    border-radius: 5px;
+input[type="text"], input[type="email"], input[type="password"], input[type="file"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: var(--font-size-small);
 }
 
-/* Media query para dispositivos más pequeños */
+/* Estilo específico para mejorar los file inputs */
+input[type="file"] {
+    padding: 10px 0;
+    font-size: var(--font-size-small);
+}
+
 @media (max-width: 768px) {
     .header .navbar {
         padding: 0.5em;
     }
 
     .formatDiv, .divAnuncio {
-        width: 100%;
-        margin: 0.5em 0;
-        box-shadow: none; /* Sombra eliminada para dispositivos móviles */
+        width: 50%;
+        margin: 0.5em;
+        box-shadow: none;
+        font-size: var(--font-size-small);
     }
+
+    button, .btn {
+        padding: 0.5em 1em;
+        font-size: var(--font-size-small);
+    }
+}
+.imgBlock {
+    height: auto; /* Esto asegura que la altura se ajuste automáticamente manteniendo la proporción de la imagen */
+    width: 500px; /* Cambia este valor al ancho deseado */
+    margin: 0 auto; /* Esto centra la imagen horizontalmente si el bloque es más ancho que la imagen */
+    display: block; /* Esto asegura que la imagen no tenga elementos en línea a los lados */
 }
